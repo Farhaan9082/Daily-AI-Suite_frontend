@@ -35,6 +35,9 @@ const config = {
 			maxHeight: {
 				'100': '32rem',
 				'104': '36rem',
+			},
+			spacing: {
+				'88': '23rem',
 			}
 		}
 	},

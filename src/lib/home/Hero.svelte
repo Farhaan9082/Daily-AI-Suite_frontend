@@ -15,5 +15,5 @@
             <a href="#Features" class="inline-block w-64 text-center bg-neutral-100 text-accent border border-accent uppercase text-xs font-medium py-3 px-8 rounded-md tracking-wider xs:text-sm xs:w-80 md:w-44 hover:shadow-lg">know more</a>
         </div>
     </div>
-    <img class="max-h-72 mt-4 xs:mt-6 xs:max-h-96 md:max-h-100 md:mt-8 lg:max-h-104" src="hero-image.jpg" alt="hero">
+    <img class="max-h-72 mt-4 xs:mt-6 xs:max-h-96 md:max-h-100 md:mt-8 lg:max-h-104" src="/hero-image.jpg" alt="hero">
 </section>

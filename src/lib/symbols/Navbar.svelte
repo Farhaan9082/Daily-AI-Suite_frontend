@@ -6,11 +6,11 @@
         },
         {
             name: "Features",
-            link: "#Features"
+            link: "/#Features"
         },
         {
             name: "Services",
-            link: "#Services"
+            link: "/#Services"
         }
     ]
     let isOpen = false
@@ -23,7 +23,7 @@
 <header class="md:flex md:justify-between md:items-center md:p-2">
     <div class="py-4 px-4 flex justify-between items-center">
         <div class="">
-            <img class="h-4" src="logo.svg" alt="logo">
+            <img class="h-4" src="/logo.svg" alt="logo">
         </div>
         <div class="cursor-pointer md:hidden" on:click={() => toggleMenu()}>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
