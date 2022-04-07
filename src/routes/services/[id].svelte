@@ -6,6 +6,7 @@
 </script>
 
 <script>
+    import Linkcard from "$lib/service/Linkcard.svelte";
     import Upload from "$lib/service/Upload.svelte";
     import { services } from "$lib/stores/servicestore";
     export let id
@@ -18,6 +19,10 @@
         <p class="mt-5 text-center text-neutral-600 text-sm w-64 xs:w-full xs:max-w-xs sm:max-w-lg lg:text-base">
             Extract text from photos and transfer it to your clipboard with ease
         </p>
-        <Upload/>
+        {#if id == 1}
+            <Linkcard/>
+        {:else}
+            <Upload/>
+        {/if}
     </section>
 </main>

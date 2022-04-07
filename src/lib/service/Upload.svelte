@@ -8,7 +8,7 @@
             <p class="text-center text-neutral-600 font-light text-sm lg:text-base">Drag & Drop your image here to upload</p>
             <p class="text-neutral-600 text-sm font-bold mt-3">OR</p>
             <div class="">
-                <label for="input" class="inline-block w-40 mt-3 text-center bg-neutral-100 text-accent border border-accent uppercase text-xs font-medium py-3 px-6 rounded-md tracking-wider cursor-pointer">Browse Images</label>
+                <label for="input" class="inline-block w-40 mt-3 text-center bg-neutral-100 text-accent border border-accent uppercase text-xs font-medium py-3 px-6 rounded-md tracking-wider cursor-pointer hover:shadow-lg">Browse Images</label>
                 <input class="hidden" type="file" name="image" id="input" accept="image/png, image/jpeg">
             </div>
         </div>
