@@ -11,6 +11,16 @@
     import { services } from "$lib/stores/servicestore";
     export let id
     let service = $services[id]
+
+    const handleImage = (e) => {
+        console.log("image recieved")
+        console.log(e.detail)
+    }
+
+    const handleYtlink = (e) => {
+        console.log("link recieved")
+        console.log(e.detail)
+    }
 </script>
 
 <main>
@@ -20,9 +30,9 @@
             Extract text from photos and transfer it to your clipboard with ease
         </p>
         {#if id == 1}
-            <Linkcard/>
+            <Linkcard on:link={handleYtlink}/>
         {:else}
-            <Upload/>
+            <Upload on:image={handleImage}/>
         {/if}
     </section>
 </main>

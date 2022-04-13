@@ -1,4 +1,7 @@
 <script>
+    import { createEventDispatcher } from "svelte";
+    const dispatch = createEventDispatcher()
+
     let isDragged = false
     let imageFile
     const validExtensions = ['image/png','image/jpeg','image/jpg']
@@ -10,7 +13,7 @@
     const handleDrop = (event) => {
         imageFile = event.dataTransfer.files[0]
         if(validExtensions.includes(imageFile.type)) {
-            console.log("Valid image")
+            handleDispatch(imageFile)
         } else {
             alert("Invalid image")
         }
@@ -18,8 +21,12 @@
 
     const handleInput = () => {
         if(imageFile[0]) {
-            console.log(imageFile[0])
+            handleDispatch(imageFile[0])
         }
+    }
+
+    const handleDispatch = (image) => {
+        dispatch('image', image)
     }
 </script>
 

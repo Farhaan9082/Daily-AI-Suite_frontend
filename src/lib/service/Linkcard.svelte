@@ -1,12 +1,33 @@
 <script>
+    import { createEventDispatcher } from "svelte";
+    const dispatch = createEventDispatcher()
+
     let link = ""
+
+    function validateYouTubeUrl(url) {
+        if (url) {
+            var regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+            if (url.match(regExp)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     const clearLink = () => {
         link = ""
     }
 
     const submitLink = () => {
-        alert("submitted")
+        if(validateYouTubeUrl(link)) {
+            handleLink(link)
+        } else {
+            alert("Invalid YouTube link")
+        }
+    }
+
+    const handleLink = (ytlink) => {
+        dispatch('link', ytlink)
     }
 </script>
 
