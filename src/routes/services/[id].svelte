@@ -6,18 +6,53 @@
 </script>
 
 <script>
+    import Output from "$lib/service/Output.svelte";
+    import Modal from "$lib/service/Modal.svelte";
     import Linkcard from "$lib/service/Linkcard.svelte";
     import Upload from "$lib/service/Upload.svelte";
     import { services } from "$lib/stores/servicestore";
     export let id
     let service = $services[id]
+    let submit = false
+    let gotResponse = false
+    let apiResponse
+
+    $: if(apiResponse) {
+        gotResponse = true
+    }
+
+
+    const mapComponent = {
+        'Upload': Upload,
+        'Linkcard': Linkcard
+    }
+
+    const handleApi = async (apidata) => {
+        const url = `http://127.0.0.1:5000/ocr`
+        let formdata = new FormData()
+        formdata.append('image', apidata)
+        const response = await fetch(url, {
+            method: "POST",
+            body: formdata
+        })
+
+        const data = await response.json()
+        if (response.ok) {
+			submit = false
+            console.log(data['text'])
+            apiResponse = data['text']
+		} else {
+			throw new Error("failed");
+		}
+    }
 
     const handleImage = (e) => {
-        console.log("image recieved")
-        console.log(e.detail)
+        submit = true
+        handleApi(e.detail)
     }
 
     const handleYtlink = (e) => {
+        submit = true
         console.log("link recieved")
         console.log(e.detail)
     }
@@ -29,10 +64,14 @@
         <p class="mt-5 text-center text-neutral-600 text-sm w-64 xs:w-full xs:max-w-xs sm:max-w-lg lg:text-base">
             Extract text from photos and transfer it to your clipboard with ease
         </p>
-        {#if id == 1}
-            <Linkcard on:link={handleYtlink}/>
+        {#if !gotResponse}
+            <svelte:component this={mapComponent[service.inputComponent]} on:link={handleYtlink} on:image={handleImage}/>
         {:else}
-            <Upload on:image={handleImage}/>
+            <Output {apiResponse}/>
+        {/if}
+
+        {#if submit}
+            <Modal/>
         {/if}
     </section>
 </main>
