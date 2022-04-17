@@ -6,7 +6,7 @@
 </script>
 
 <script>
-    import Output from "$lib/service/Output.svelte";
+    import Showtext from "$lib/service/Showtext.svelte";
     import Modal from "$lib/service/Modal.svelte";
     import Linkcard from "$lib/service/Linkcard.svelte";
     import Upload from "$lib/service/Upload.svelte";
@@ -28,22 +28,32 @@
     }
 
     const handleApi = async (apidata) => {
-        const url = `http://127.0.0.1:5000/ocr`
         let formdata = new FormData()
-        formdata.append('image', apidata)
-        const response = await fetch(url, {
-            method: "POST",
-            body: formdata
-        })
+        if(id == 1) {
+            formdata.append('link', apidata)
+        } else {
+            formdata.append('image', apidata)
+        }
 
-        const data = await response.json()
-        if (response.ok) {
-			submit = false
-            console.log(data['text'])
-            apiResponse = data['text']
-		} else {
-			throw new Error("failed");
-		}
+        try {
+            const response = await fetch(service.apiUrl, {
+                method: "POST",
+                body: formdata
+            })
+
+            const data = await response.json()
+            if (response.ok) {
+                submit = false
+                console.log(data[service.responseKey])
+                apiResponse = data[service.responseKey]
+            } else {
+                throw Error(response.statusText)
+            }
+        } catch (error) {
+            console.log(error)
+            alert("Server not responding")
+            submit = false
+        }
     }
 
     const handleImage = (e) => {
@@ -53,8 +63,12 @@
 
     const handleYtlink = (e) => {
         submit = true
-        console.log("link recieved")
-        console.log(e.detail)
+        handleApi(e.detail)
+    }
+
+    const handleRevert = () => {
+        gotResponse = false
+        apiResponse = undefined
     }
 </script>
 
@@ -67,7 +81,7 @@
         {#if !gotResponse}
             <svelte:component this={mapComponent[service.inputComponent]} on:link={handleYtlink} on:image={handleImage}/>
         {:else}
-            <Output {apiResponse}/>
+            <Showtext {apiResponse} on:revert={handleRevert}/>
         {/if}
 
         {#if submit}
