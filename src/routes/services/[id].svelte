@@ -6,6 +6,9 @@
 </script>
 
 <script>
+    import Slider from "$lib/service/Slider.svelte";
+    import Showcolor from "$lib/service/Showcolor.svelte";
+    import Showimage from "$lib/service/Showimage.svelte";
     import Showtext from "$lib/service/Showtext.svelte";
     import Modal from "$lib/service/Modal.svelte";
     import Linkcard from "$lib/service/Linkcard.svelte";
@@ -24,7 +27,11 @@
 
     const mapComponent = {
         'Upload': Upload,
-        'Linkcard': Linkcard
+        'Linkcard': Linkcard,
+        'Showtext': Showtext,
+        'Showimage': Showimage,
+        'Showcolor': Showcolor,
+        'Slider': Slider,
     }
 
     const handleApi = async (apidata) => {
@@ -40,12 +47,24 @@
                 method: "POST",
                 body: formdata
             })
+            
+            let data
+            if(id == 3 || id == 4 || id == 5) {
+                data = await response.blob()
+            } else {
+                data = await response.json()
+            }
 
-            const data = await response.json()
             if (response.ok) {
                 submit = false
-                console.log(data[service.responseKey])
-                apiResponse = data[service.responseKey]
+                if(id == 3 || id == 4 || id == 5) {
+                    console.log(data)
+                    let objectURL = URL.createObjectURL(data)
+                    apiResponse = objectURL
+                } else {
+                    console.log(data[service.responseKey])
+                    apiResponse = data[service.responseKey]
+                }
             } else {
                 throw Error(response.statusText)
             }
@@ -81,7 +100,7 @@
         {#if !gotResponse}
             <svelte:component this={mapComponent[service.inputComponent]} on:link={handleYtlink} on:image={handleImage}/>
         {:else}
-            <Showtext {apiResponse} on:revert={handleRevert}/>
+            <svelte:component this={mapComponent[service.outputComponent]} {apiResponse} on:revert={handleRevert}/>
         {/if}
 
         {#if submit}
