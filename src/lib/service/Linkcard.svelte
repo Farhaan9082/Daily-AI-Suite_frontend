@@ -5,6 +5,20 @@
     let link = ""
     let value = 5
     let keys
+    let color1
+    let color2
+
+    $: if(value == 1) {
+        color1 = '#FFFDFA'
+    } else {
+        color1 = '#7C3AED'
+    }
+
+    $: if(value == 10) {
+        color2 = '#FFFDFA'
+    } else {
+        color2 = '#7C3AED'
+    }
 
     function validateYouTubeUrl(url) {
         if (url) {
@@ -54,14 +68,14 @@
                     no. of sentences
                 </p>
                 <div class="flex">
-                    <div on:click={decrementValue} class="cursor-pointer border border-accent select-none rounded-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#7C3AED" stroke-width="2">
+                    <div on:click={decrementValue} class="cursor-pointer border border-accent select-none rounded-sm {value == 1 ? 'border-neutral-600 bg-neutral-600' : ''}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke={color1} stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
                         </svg>
                     </div>
                     <input class="text-center w-8 focus:outline-none cursor-default" type="text" bind:value={value} readonly>
-                    <div on:click={incrementValue} class="cursor-pointer border border-accent select-none rounded-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#7C3AED" stroke-width="2">
+                    <div on:click={incrementValue} class="cursor-pointer border border-accent select-none rounded-sm {value == 10 ? 'border-neutral-600 bg-neutral-600' : ''}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke={color2} stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                         </svg>
                     </div>
