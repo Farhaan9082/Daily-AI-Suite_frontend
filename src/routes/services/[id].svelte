@@ -38,6 +38,9 @@
         let formdata = new FormData()
         if(id == 1) {
             formdata.append('link', apidata)
+        } else if(id == 4) {
+            formdata.append('image', apidata[0])
+            formdata.append('value', apidata[1])
         } else {
             formdata.append('image', apidata)
         }
@@ -58,11 +61,9 @@
             if (response.ok) {
                 submit = false
                 if(id == 3 || id == 4 || id == 5) {
-                    console.log(data)
                     let objectURL = URL.createObjectURL(data)
                     apiResponse = objectURL
                 } else {
-                    console.log(data[service.responseKey])
                     apiResponse = data[service.responseKey]
                 }
             } else {
