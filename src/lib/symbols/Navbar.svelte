@@ -38,14 +38,14 @@
     <div class="pb-5 border-b border-neutral-300 md:border-0 {isOpen ? 'block' : 'hidden'} md:block md:pb-0">
         <ul class="md:flex md:items-center">
             {#each menus as menu}
-               <li class="mx-2 mt-1 md:mt-0 rounded hover:bg-neutral-300"><a class="block py-1 px-2 text-sm font-medium" href={menu.link}>{menu.name}</a></li> 
+               <li class="mx-2 mt-1 md:mt-0 rounded hover:bg-neutral-300"><a on:click={() => toggleMenu()} class="block py-1 px-2 text-sm font-medium" href={menu.link}>{menu.name}</a></li> 
             {/each}
         </ul>
         <div class="mt-4 px-4 md:hidden">
-            <a href="#Services" class="inline-block bg-accent text-neutral-100 uppercase text-xs font-medium py-2 px-3 rounded hover:shadow-lg hover:bg-accent-dark transition-colors">get started</a>
+            <a on:click={() => toggleMenu()} href="/#Services" class="inline-block bg-accent text-neutral-100 uppercase text-xs font-medium py-2 px-3 rounded hover:shadow-lg hover:bg-accent-dark transition-colors">get started</a>
         </div>
     </div>
     <div class="mt-4 px-4 hidden md:block md:mt-0">
-        <a href="#Services" class="inline-block bg-accent text-neutral-100 uppercase text-xs font-medium py-2 px-3 rounded hover:shadow-lg hover:bg-accent-dark transition-colors">get started</a>
+        <a href="/#Services" class="inline-block bg-accent text-neutral-100 uppercase text-xs font-medium py-2 px-3 rounded hover:shadow-lg hover:bg-accent-dark transition-colors">get started</a>
     </div>
 </header>

@@ -5,7 +5,7 @@
 <section class="px-4 py-4 flex flex-col items-center">
     <h1 class="text-3xl leading-8 w-64 font-bold text-center xs:text-4xl xs:w-full xs:max-w-md xs:mt-4 md:text-5xl md:max-w-xl lg:text-6xl lg:max-w-3xl">AI-driven suite of tools to help you get things done</h1>
     <p class="mt-5 text-center text-neutral-600 text-sm w-72 xs:text-base xs:w-full xs:max-w-md xs:mt-8 md:max-w-xl lg:max-w-2xl">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+        AI suite is a pursuit to save time of our users and imbibe more AI into their lives. Daily features like: OCR, Summarizer, Colorizer all in one common place.
     </p>
     <div class="grid grid-cols-1 px-4 mt-8 gap-3 xs:mt-10 xs:gap-4 md:grid-cols-2">
         <div class="">

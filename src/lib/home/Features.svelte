@@ -1,5 +1,5 @@
 <script>
-    let features = ['Modern and intuitive design','Full customizable components','Modern and intuitive design','Full customizable components']
+    let features = ['Fast & accurate to help you save time','Intuitive and simple user experience','Fully responsive, down to mobile','Highly secure when it comes to privacy']
 </script>
 
 <section class="md:flex md:flex-col md:items-center" id="Features">

@@ -11,7 +11,7 @@
                     <img src="/services-icon.png" alt="icon" class="h-6 xs:h-7 lg:w-7">
                     <h1 class="text-lg mt-5 font-semibold leading-tight xs:mt-7 xs:text-xl">{service.title}</h1>
                     <p class="text-neutral-600 mt-3 w-64 text-xs  xs:text-sm xs:w-full xs:max-w-sm">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                        {service.detail}
                     </p>
                     <div class="flex mt-8 items-center xs:mt-9">
                         <h1 class="text-accent text-sm font-semibold xs:text-base">Explore</h1>
