@@ -6,6 +6,7 @@
 
 <svelte:head>
 	<link rel="icon" type="image/svg" href="/favicon.svg">
+	<title>AI Suite | AI-driven suite of tools to help you get things done</title>
 </svelte:head>
 
 <Navbar/>

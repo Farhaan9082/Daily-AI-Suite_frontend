@@ -15,13 +15,19 @@
     import Upload from "$lib/service/Upload.svelte";
     import { services } from "$lib/stores/servicestore";
     export let id
-    let service = $services[id]
+    $: service = $services[id]
     let submit = false
     let gotResponse = false
     let apiResponse
 
     $: if(apiResponse) {
         gotResponse = true
+    }
+
+    $: {
+        id,
+        gotResponse = false
+        apiResponse = undefined
     }
 
 
